@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../services/spotify.service';
 import { User } from '../models/user.model';
 import { Track } from '../models/track.model';
+import { TokenService } from 'spotify-auth';
 
 @Component({
   selector: 'app-profile',
@@ -10,10 +11,11 @@ import { Track } from '../models/track.model';
 })
 export class ProfileComponent implements OnInit {
   public user: User;
-  public items: Track[] = []
+  public items: Track[] = [];
 
   constructor(
-    public spotifyService: SpotifyService
+    public spotifyService: SpotifyService,
+    public tokenSvc: TokenService
   ) { }
 
   ngOnInit(): void {
