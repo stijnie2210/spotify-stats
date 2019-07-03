@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { User } from '../models/user.model';
 import { environment } from 'src/environments/environment';
 import { TokenService } from 'spotify-auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,7 @@ export class SpotifyService {
   private userId: string = environment.userId;
 
   constructor(
-    private http: HttpClient,
-    private tokenSvc: TokenService
+    private http: HttpClient
   ) { }
 
   public getProfile(): Observable<User> {

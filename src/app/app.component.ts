@@ -16,13 +16,12 @@ export class AppComponent implements OnInit {
     public http: HttpClient,
     public tokenSvc: TokenService,
     private authService: AuthService,
-    private spotifyService: SpotifyService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.authService.authorizedStream.pipe(x => x).subscribe(() => {
-      this.router.navigate(['auth']);
+    this.authService.authorizedStream.subscribe(() => {
+      this.router.navigate(['/profile']);
   });
   }
 }

@@ -17,24 +17,21 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if (!this.tokenSvc.oAuthToken) {
-      this.router.navigate(['auth']);
+      this.router.navigate(['']);
     }
   }
 
   public login(): void {
     const scopes = new ScopesBuilder()
-      .withScopes('user-library-read')
-      .withScopes('user-read-recently-played')
-      .withScopes('user-top-read')
-      .withScopes('user-read-currently-playing')
+      .withScopes(ScopesBuilder.HISTORY)
       .build();
     const ac: AuthConfig = {
-      client_id: 'f45378098d9940a49bbf1db2a2717fd6',
+      client_id: '6f571c4c47054ba7ac40115a3bf3aeb8',
       response_type: 'token',
-      redirect_uri: 'http://localhost:4200/auth',
+      redirect_uri: 'http://localhost:4200/profile',
       state:  '',
       show_dialog:  true,
-      scope:  scopes
+      scope: scopes
     };
     this.authService.configure(ac).authorize();
   }
